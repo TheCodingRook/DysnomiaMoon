@@ -59,6 +59,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateRemainingTime(float InTime);
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void UpdateSupplies(float InFuel, float InGold);
 	
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
 	UTextBlock* PromptText;

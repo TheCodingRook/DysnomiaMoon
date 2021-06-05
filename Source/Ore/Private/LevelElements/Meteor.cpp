@@ -38,11 +38,11 @@ void AMeteor::Tick(float DeltaTime)
 void AMeteor::SetupValues_Implementation()
 {
 	MeteorMesh->SetSimulatePhysics(true);
-	MeteorMesh->SetLinearDamping(.75f);
+	MeteorMesh->SetLinearDamping(1.f);
 	MeteorMesh->SetCollisionProfileName(TEXT("BlockAllDynamic"));
 	MeteorMesh->SetGenerateOverlapEvents(true);
 	CollisionVolume->SetGenerateOverlapEvents(true);
-	CollisionVolume->SetLinearDamping(.75f);
+	CollisionVolume->SetLinearDamping(1.f);
 	SetActorHiddenInGame(false);
 }
 
