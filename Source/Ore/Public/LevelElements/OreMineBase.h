@@ -61,4 +61,7 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FInfectionWasCleared InfectionWasCleared;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText MineName;
+
 };
