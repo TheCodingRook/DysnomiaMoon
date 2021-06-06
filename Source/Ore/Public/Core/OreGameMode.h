@@ -6,6 +6,17 @@
 #include "GameFramework/GameModeBase.h"
 #include "OreGameMode.generated.h"
 
+/**
+* Custom enumeration type to explain why game is over
+*/
+UENUM(BlueprintType)
+enum class EGameOverReason : uint8
+{
+	Meteors UMETA(DisplayName = "Too many meteors"),
+    Parasite UMETA(DisplayName = "Too much parasite shipped"),
+};
+
+
 // Forward declarations
 class UOreHUD;
 

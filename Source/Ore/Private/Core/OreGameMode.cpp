@@ -47,6 +47,10 @@ void AOreGameMode::OnMeteorCrashed()
 	else
 	{
 		UOreGameplayStatics::SetGamePaused(this, true);
-		UOreGameplayStatics::OpenLevel(this, TEXT("MainMenu"));
+		if(MainHUD)
+		{
+			MainHUD->DisplayWhyGameOver(EGameOverReason::Meteors);
+		}
+		//UOreGameplayStatics::OpenLevel(this, TEXT("MainMenu")); // we will call the main menu from the HUD...
 	}
 }

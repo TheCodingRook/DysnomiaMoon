@@ -10,6 +10,7 @@
 #include "Components/OreBombingComponent.h"
 #include "Core/OreGameplayStatics.h"
 #include "UI/OreHUD.h"
+#include "LevelElements/Meteor.h"
 
 // Sets default values
 AOreFighterJet::AOreFighterJet()
@@ -70,19 +71,25 @@ void AOreFighterJet::OnSpacecraftDamaged(AActor* DamagedActor, float Damage, con
 	{
 		CurrentHealth -= Damage;
 		//UE_LOG(LogTemp, Warning, TEXT("FigherJet was attacked! [Damage: %f]"), Damage);
-		UOreGameplayStatics::GetOreGameMode(this)->MainHUD->UpdateSpacecraftHealth(CurrentHealth/Health);		
-	}
-	if(CurrentHealth <= 0)
-	{
-		if(OrePlayerController)
+		UOreGameplayStatics::GetOreGameMode(this)->MainHUD->UpdateSpacecraftHealth(CurrentHealth/Health);			
+
+		if(CurrentHealth <= 0)
 		{
-			OrePlayerController->OnSpacecraftDestroyed();			
+			if(OrePlayerController)
+			{
+				OrePlayerController->OnSpacecraftDestroyed();			
+			}
+			else
+			{
+				UOreGameplayStatics::GetOrePlayerController(this)->OnSpacecraftDestroyed();
+			}
 		}
 		else
 		{
-			UOreGameplayStatics::GetOrePlayerController(this)->OnSpacecraftDestroyed();
+			UOreGameplayStatics::GetOreGameMode(this)->MainHUD->DisplayFigherJetDamage();
 		}
 	}
+	
 }
 
 UOreFiringComponent* AOreFighterJet::GetFiringComponent() const

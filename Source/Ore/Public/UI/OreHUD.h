@@ -5,11 +5,13 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "LevelElements/OreLumpBase.h"
-
+#include "Core/OreGameMode.h"
+//#include "Pawns/OreFighterJet.h"
 #include "OreHUD.generated.h"
 
 // Forward declarations
 class UTextBlock;
+enum class EFighterJetDamageType : uint8;
 
 /**
  * 
@@ -52,7 +54,7 @@ public:
     void HideSpacecraftHealthBar();
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-	void GiveInfectionWarning(const FText& InMineType);
+	void GiveInfectionWarning(const FString& InMineType);
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateInfectionsCounter(int Delta);
@@ -62,6 +64,15 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateSupplies(float InFuel, float InGold);
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void DisplayWhyGameOver(EGameOverReason GameOverReason);
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void DisplayFigherJetDestroyedWarning();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void DisplayFigherJetDamage();
 	
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
 	UTextBlock* PromptText;

@@ -31,4 +31,3 @@ void AOreInfectionManagerBase::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
-

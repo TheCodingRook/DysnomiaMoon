@@ -15,6 +15,16 @@ class UBoardSpacecraft;
 class UOreFiringComponent;
 class UOreBombingComponent;
 
+/**
+* Custom enumeration type to explain who caused damage to the spacecraaft/fighter jet
+*/
+UENUM(BlueprintType)
+enum class EFighterJetDamageType : uint8
+{
+	Meteor UMETA(DisplayName = "Meteor"),
+    SAM UMETA(DisplayName = "MissileDefenseInstallation"),
+};
+
 UCLASS()
 class ORE_API AOreFighterJet : public APawn
 {

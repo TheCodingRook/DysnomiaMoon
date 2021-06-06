@@ -22,6 +22,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnMineInfectionCleared(const FString& InMineName);
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float ElapsedTime;
 	

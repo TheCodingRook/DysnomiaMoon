@@ -10,6 +10,7 @@
 // Forward declarations
 class AOrePipeline;
 class AInfectionSpawnVolume;
+class AOreInfectionManagerBase;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FInfectionWasCleared);
 
@@ -62,6 +63,10 @@ public:
 	FInfectionWasCleared InfectionWasCleared;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText MineName;
+	FString MineName;
 
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	AOreInfectionManagerBase* MyInfectionManager;
+	
 };

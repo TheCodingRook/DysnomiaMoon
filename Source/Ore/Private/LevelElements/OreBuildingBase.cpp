@@ -141,7 +141,7 @@ void AOreBuildingBase::Tick(float DeltaTime)
 					Resources[i].Quantity -= FMath::Min(MaxGoldRocketCanTake, MaxGoldWarehouseCanGive);
 				
 				}
-				else if(Resources[i].ResourceType == EOreType::Fuel)
+				else if(Resources[i].ResourceType == EOreType::Fuel && !bInfected) // If this building (i.e. GoldWarehouse) is infected, stop fueling of the RocketShip!
 				{
 					// Deal with fuel
 					float MaxFuelRocketCanTake = FMath::Min(RocketShip->MinFuelRequired - RocketShip->LoadedFuel, Resources[i].SpendPerSecond * DeltaTime);

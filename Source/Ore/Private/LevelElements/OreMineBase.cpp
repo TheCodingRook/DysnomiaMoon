@@ -7,6 +7,7 @@
 
 #include "Core/OreGameplayStatics.h"
 #include "LevelElements/InfectionSpawnVolume.h"
+#include "LevelElements/OreInfectionManagerBase.h"
 #include "LevelElements/OrePipeline.h"
 #include "UI/OreHUD.h"
 
@@ -59,6 +60,10 @@ void AOreMineBase::OnInfectionCleared_Implementation()
 {
 	SetInfectionState(false);
 	UOreGameplayStatics::GetOreGameMode(this)->MainHUD->UpdateInfectionsCounter(-1);
+	if(MyInfectionManager)
+	{
+		MyInfectionManager->OnMineInfectionCleared(MineName);
+	}
 	for(auto Pipeline : Pipelines)
 	{
 		if (Pipeline)

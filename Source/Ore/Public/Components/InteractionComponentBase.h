@@ -40,7 +40,7 @@ class ORE_API UInteractionComponentBase : public UCapsuleComponent
 	virtual void BeginPlay() override;
 
 	// What is the prompt for this interaction? - If not set in code, remember to set in Blueprint
-	UPROPERTY(VisibleAnywhere, Category = "Widget")
+	UPROPERTY(EditAnywhere, Category = "Widget")
 	FText InteractionText;	
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Widget")

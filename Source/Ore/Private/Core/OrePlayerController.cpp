@@ -14,6 +14,7 @@
 #include "Core/OreGameplayStatics.h"
 #include "GameFramework/PawnMovementComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "UI/OreHUD.h"
 
 AOrePlayerController::AOrePlayerController()
 {
@@ -320,6 +321,7 @@ void AOrePlayerController::OnSpacecraftDestroyed()
 	Possess(AstroMiner);
 	AstroMiner->GetMovementComponent()->ResetMoveState();
 	UOreGameplayStatics::GetOreGameMode(this)->MainHUD->HideSpacecraftHealthBar();
+	UOreGameplayStatics::GetOreGameMode(this)->MainHUD->DisplayFigherJetDestroyedWarning();
 	if(FighterJet)
 	{
 		// Get read of the guns of this spacecraft
