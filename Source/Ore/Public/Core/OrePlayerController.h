@@ -81,6 +81,12 @@ protected:
 	/* Move up when piloting a spacecraft */
 	void MoveUp(float Value);
 
+	/* Turn with a controller */
+	void TurnRate(float Rate);
+
+	/* Look up with a controller */
+	void LookUpRate(float Rate);
+	
 	/* Exit a spacecraft */
 	void ExitSpacecraft();
 

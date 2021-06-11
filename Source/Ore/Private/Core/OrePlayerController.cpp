@@ -45,6 +45,9 @@ void AOrePlayerController::SetupInputComponent()
 	InputComponent->BindAxis("MoveForward", this, &AOrePlayerController::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AOrePlayerController::MoveRight);
 	InputComponent->BindAxis("MoveUp", this, &AOrePlayerController::MoveUp);
+
+	InputComponent->BindAxis("TurnRate", this, &AOrePlayerController::TurnRate);
+	InputComponent->BindAxis("LookUpRate", this, &AOrePlayerController::LookUpRate);
 	
 	// support touch devices 
 	InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &AOrePlayerController::MoveToTouchLocation);
@@ -235,6 +238,31 @@ void AOrePlayerController::MoveUp(float Value)
 		if(PlayerMovementMode == EOreMovementMode::Piloting && FighterJet != nullptr)
 		{
 			/*FighterJet*/GetPawn()->AddMovementInput(FVector(0.f, 0.f, Value), 1.f, false);
+		}		
+	}
+}
+
+void AOrePlayerController::TurnRate(float Rate)
+{
+	if (Rate != 0)
+	{
+		if(PlayerMovementMode == EOreMovementMode::OnFoot && AstroMiner->IsA(AOreCharacter3P::StaticClass()))
+		{
+			// calculate delta for this frame from the rate information
+			AddYawInput(Rate * 45.f * GetWorld()->GetDeltaSeconds());		
+		}
+		
+	}
+}
+
+void AOrePlayerController::LookUpRate(float Rate)
+{
+	if (Rate != 0)
+	{
+		if (PlayerMovementMode == EOreMovementMode::OnFoot && AstroMiner->IsA(AOreCharacter3P::StaticClass()))
+		{
+			// calculate delta for this frame from the rate information
+			AddPitchInput(Rate * 45.f * GetWorld()->GetDeltaSeconds());
 		}		
 	}
 }
